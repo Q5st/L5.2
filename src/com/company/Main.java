@@ -17,24 +17,40 @@ public class Main {
         String depar2Arr[] = new String[Employee.dp2];
         int salArr[] = new  int[Employee.j];
 
-        if (emp1.getDepar()==1){ depar1Arr[1] = emp1.getName();} else {depar2Arr[1] = emp1.getName();}
-        salArr[1] = emp1.getSal();
-        if (emp2.getDepar()==1){ depar1Arr[2] = emp2.getName();} else {depar2Arr[2] = emp2.getName();}
-        salArr[2] = emp1.getSal();
-        if (emp1.getDepar()==1){ depar1Arr[5] = emp5.getName();} else {depar2Arr[5] = emp5.getName();}
-        salArr[5] = emp1.getSal();
-        if (emp1.getDepar()==1){ depar1Arr[4] = emp4.getName();} else {depar2Arr[4] = emp4.getName();}
-        salArr[4] = emp1.getSal();
-        if (emp1.getDepar()==1){ depar1Arr[3] = emp3.getName();} else {depar2Arr[3] = emp3.getName();}
-        salArr[3] = emp1.getSal();
+        int dpI1=0, dpI2=0;
+
+        if (emp1.getDepar()==1){ depar1Arr[dpI1] = emp1.getName(); dpI1++;} else {depar2Arr[dpI2] = emp1.getName(); dpI2++;}
+        salArr[0] = emp1.getSal();
+        if (emp2.getDepar()==1){ depar1Arr[dpI1] = emp2.getName(); dpI1++;} else {depar2Arr[dpI2] = emp2.getName(); dpI2++;}
+        salArr[1] = emp2.getSal();
+        if (emp5.getDepar()==1){ depar1Arr[dpI1] = emp5.getName(); dpI1++;} else {depar2Arr[dpI2] = emp5.getName(); dpI2++;}
+        salArr[4] = emp5.getSal();
+        if (emp4.getDepar()==1){ depar1Arr[dpI1] = emp4.getName(); dpI1++;} else {depar2Arr[dpI2] = emp4.getName(); dpI2++;}
+        salArr[3] = emp4.getSal();
+        if (emp3.getDepar()==1){ depar1Arr[dpI1] = emp3.getName(); dpI1++;} else {depar2Arr[dpI2] = emp3.getName(); dpI2++;}
+        salArr[2] = emp3.getSal();
 
         Scanner scanner = new Scanner(System.in);
         int a;
         do{
             System.out.println("Enter department");
             a=scanner.nextInt();
-        }while (a!=1 || a!=2);
+        }while (a!=1 && a!=2);
         if (a==1){System.out.println(Arrays.toString(depar1Arr));}
         else{System.out.println(Arrays.toString(depar2Arr));}
+
+        int tmp;
+
+        for (int i = 0; i < salArr.length; i++) {
+            for (int j = i + 1; j < salArr.length; j++) {
+                if (salArr[i] < salArr[j]) {
+                    tmp = salArr[i];
+                    salArr[i] = salArr[j];
+                    salArr[j] = tmp;
+                }
+            }
+        }
+
+        System.out.println(Arrays.toString(salArr));
     }
 }
