@@ -14,7 +14,7 @@ public class Main {
         int salArr[] = new  int[Employee.j];
 
         for (int i=0; i<Employee.j; i++){
-            s
+
         }
 
         Scanner scanner = new Scanner(System.in);
